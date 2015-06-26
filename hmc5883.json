@@ -1,0 +1,80 @@
+{
+	"type": "Embedded Library",
+	"label": "HMC5883 Driver",
+	"language": {
+		"en": {
+			"label": "HMC5883 Driver"
+		}
+	},
+	"name": "hmc5883",
+	"author": "Anaren Inc.",
+	"manufacturer": "Honeywell",
+	"description":"The Honeywell HMC5883L is a surface-mount, multi-chip module designed for low-field magnetic sensing with a digital interface for applications such as low-cost compassing and magnetometry. The HMC5883Lincludes our state-of-the-art, high-resolution HMC118Xseries magneto-resistive sensors plus anASIC containing amplification, automatic degaussing strap drivers, offset cancellation, and a 12-bit ADC that enables 1° to 2°compass heading accuracy.  The I2C serial bus allows for easy interface. The HMC5883L is a 3.0x3.0x0.9mm surface mount 16-pin leadless chip carrier(LCC). Applications for the HMC5883L include Mobile Phones, Netbooks, Consumer Electronics, Auto Navigation Systems, and Personal Navigation Devices.",
+	"signature": "",
+	"version": "1.0.0",
+
+	"links":{
+		"Datasheet":"http://www51.honeywell.com/aero/common/documents/myaerospacecatalog-documents/Defense_Brochures-documents/HMC5883L_3-Axis_Digital_Compass_IC.pdf"
+	},
+	
+	"code": {
+		"global" : "",
+		"setup" : "" 
+	},
+	
+	"elements": {
+		"xRawMagneticField": {
+			"label": "X Raw Magnetic Field",
+			"language": {
+				"en": {
+					"label": "X Raw Magnetic Field"
+				}
+			},
+			"returnType":"int",
+			"inputType":"void",
+			"icon": null,
+			"code": ""
+		},
+		
+		"yRawMagneticField": {
+			"label": "Y Raw Magnetic Field",
+			"language": {
+				"en": {
+					"label": "Y Raw Magnetic Field"
+				}
+			},
+			"returnType":"int",
+			"inputType":"void",
+			"icon": null,
+			"code": ""
+		},
+		
+		"zRawMagneticField": {
+			"label": "Z Raw Magnetic Field",
+			"language": {
+				"en": {
+					"label": "Z Raw Magnetic Field"
+				}
+			},
+			"returnType":"int",
+			"inputType":"void",
+			"icon": null,
+			"code": ""
+		},
+		
+		"rawMagneticField": {
+			"label": "Raw Magnetic Field",
+			"language": {
+				"en": {
+					"label": "Raw Magnetic Field"
+				}
+			},
+			"returnType":"json",
+			"inputType":"void",
+			"icon": null,
+			"code": ""
+		}
+	},
+	
+	"categories":["Magnetometer", "Sensor"]
+}
