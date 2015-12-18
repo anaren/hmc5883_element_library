@@ -29,14 +29,15 @@
 #define HMC5883_H
 
 #include "hmc5883_config.h"
-#include "types.h"
+#include <stddef.h>
+#include <stdint.h>
 
 //------------------------------------------------------------------------------
 /**
  *	Defines, enumerations, and structure definitions
  */
 #ifndef bool
-#define bool uint8
+#define bool uint8_t
 #endif
 
 #ifndef true
@@ -169,14 +170,14 @@ registers may result in undesireable behavior.
 @param addr device register address
 @param data data to be written to the specified register address
 */
-void HMC5883_WriteReg(uint8 addr, uint8 data);
+void HMC5883_WriteReg(uint8_t addr, uint8_t data);
 
 /** 
 Read an 8-bit value from a device register.
 @param addr device register address
 @return data read from the specified register address
 */
-uint8 HMC5883_ReadReg(uint8 addr);
+uint8_t HMC5883_ReadReg(uint8_t addr);
 
 /** 
 Read multiple 8-bit register values from the device.	The HMC5883L uses an
@@ -186,7 +187,7 @@ is automatically incremented for each register read.
 @param readBytes pointer to buffer for storing the values read
 @param numBytes number of registers to read
 */
-void HMC5883_BurstReadReg(uint8 addr, uint8* readBytes, uint8 numBytes);
+void HMC5883_BurstReadReg(uint8_t addr, uint8_t* readBytes, uint8_t numBytes);
 
 
 void HMC5883_SetNumberSamplesAveraged(enum eHMC5883SamplesAveraged samples);
@@ -229,19 +230,19 @@ struct sHMC5883Status HMC5883_GetStatus(void);
 Read ID Register A.
 @return contents of ID Register A.	Value always = 0x48 (ascii 'H').
 */
-uint8 HMC5883_GetIdRegA(void);
+uint8_t HMC5883_GetIdRegA(void);
 
 /**
 Read ID Register B.
 @return contents of ID Register B.	Value always = 0x34 (ascii '4').
 */
-uint8 HMC5883_GetIdRegB(void);
+uint8_t HMC5883_GetIdRegB(void);
 
 /**
 Read ID Register C.
 @return contents of ID Register C.	Value always = 0x33 (ascii '3').
 */
-uint8 HMC5883_GetIdRegC(void);
+uint8_t HMC5883_GetIdRegC(void);
 
 
 #endif	/* HMC5883_H */

@@ -50,25 +50,25 @@
  *	Public interface
  */
 
-void HMC5883_WriteReg(uint8 addr, uint8 data)
+void HMC5883_WriteReg(uint8_t addr, uint8_t data)
 {
-	uint8 writeBytes[2];
+	uint8_t writeBytes[2];
 
 	writeBytes[0] = addr;
 	writeBytes[1] = data;
 	AIR_I2C_Write(HMC5883_SLAVE_BASE_ADDR, writeBytes, 2);
 }
 
-uint8 HMC5883_ReadReg(uint8 addr)
+uint8_t HMC5883_ReadReg(uint8_t addr)
 {
-	uint8 readByte;
+	uint8_t readByte;
 
 	AIR_I2C_Write(HMC5883_SLAVE_BASE_ADDR, &addr, 1);
 	AIR_I2C_ComboRead(HMC5883_SLAVE_BASE_ADDR, NULL, 0, &readByte, 1);
 	return readByte;
 }
 
-void HMC5883_BurstReadReg(uint8 addr, uint8* readBytes, uint8 numBytes)
+void HMC5883_BurstReadReg(uint8_t addr, uint8_t* readBytes, uint8_t numBytes)
 {
 	AIR_I2C_Write(HMC5883_SLAVE_BASE_ADDR, &addr, 1);
 	AIR_I2C_ComboRead(HMC5883_SLAVE_BASE_ADDR, NULL, 0, readBytes, numBytes);
@@ -78,10 +78,10 @@ void HMC5883_BurstReadReg(uint8 addr, uint8* readBytes, uint8 numBytes)
 
 void HMC5883_SetNumberSamplesAveraged(enum eHMC5883SamplesAveraged samples)
 {
-	uint8 data = HMC5883_ReadReg(HMC5883_CONFIG_A_REG_ADDR);
+	uint8_t data = HMC5883_ReadReg(HMC5883_CONFIG_A_REG_ADDR);
 	
 	data &= ~HMC5883_CONFIG_A_REG_MA;
-	data |= (uint8)samples;
+	data |= (uint8_t)samples;
 	HMC5883_WriteReg(HMC5883_CONFIG_A_REG_ADDR, data);
 }
 
@@ -92,10 +92,10 @@ enum eHMC5883SamplesAveraged HMC5883_GetNumberSamplesAveraged(void)
 
 void HMC5883_SetDataOutputRate(enum eHMC5883DataOutputRate rate)
 {
-	uint8 data = HMC5883_ReadReg(HMC5883_CONFIG_A_REG_ADDR);
+	uint8_t data = HMC5883_ReadReg(HMC5883_CONFIG_A_REG_ADDR);
 	
 	data &= ~HMC5883_CONFIG_A_REG_DO;
-	data |= (uint8)rate;
+	data |= (uint8_t)rate;
 	HMC5883_WriteReg(HMC5883_CONFIG_A_REG_ADDR, data);
 }
 
@@ -106,10 +106,10 @@ enum eHMC5883DataOutputRate HMC5883_GetDataOutputRate(void)
 
 void HMC5883_SetMeasurementMode(enum eHMC5883MeasurementMode mode)
 {
-	uint8 data = HMC5883_ReadReg(HMC5883_CONFIG_A_REG_ADDR);
+	uint8_t data = HMC5883_ReadReg(HMC5883_CONFIG_A_REG_ADDR);
 	
 	data &= ~HMC5883_CONFIG_A_REG_MS;
-	data |= (uint8)mode;
+	data |= (uint8_t)mode;
 	HMC5883_WriteReg(HMC5883_CONFIG_A_REG_ADDR, data);
 }
 
@@ -120,10 +120,10 @@ enum eHMC5883MeasurementMode HMC5883_GetMeasurementMode(void)
 
 void HMC5883_SetGain(enum eHMC5883Gain gain)
 {
-	uint8 data = HMC5883_ReadReg(HMC5883_CONFIG_B_REG_ADDR);
+	uint8_t data = HMC5883_ReadReg(HMC5883_CONFIG_B_REG_ADDR);
 	
 	data &= ~HMC5883_CONFIG_B_REG_GN;
-	data |= (uint8)gain;
+	data |= (uint8_t)gain;
 	HMC5883_WriteReg(HMC5883_CONFIG_B_REG_ADDR, data);
 }
 
@@ -135,10 +135,10 @@ enum eHMC5883Gain HMC5883_GetGain(void)
 
 void HMC5883_SetOperatingMode(enum eHMC5883OperatingMode mode)
 {
-	uint8 data = HMC5883_ReadReg(HMC5883_MODE_REG_ADDR);
+	uint8_t data = HMC5883_ReadReg(HMC5883_MODE_REG_ADDR);
 	
 	data &= ~HMC5883_MODE_REG_MD;
-	data |= (uint8)mode;
+	data |= (uint8_t)mode;
 	HMC5883_WriteReg(HMC5883_MODE_REG_ADDR, data);
 }
 
@@ -150,7 +150,7 @@ enum eHMC5883OperatingMode HMC5883_GetOperatingMode(void)
 struct sHMC5883Status HMC5883_GetStatus(void)
 {
 	struct sHMC5883Status status;
-	uint8 data = HMC5883_ReadReg(HMC5883_STATUS_REG_ADDR);
+	uint8_t data = HMC5883_ReadReg(HMC5883_STATUS_REG_ADDR);
 
 	status.rdy = (data & HMC5883_STATUS_REG_RDY) ? true : false;
 	status.lock = (data & HMC5883_STATUS_REG_LOCK) ? true : false;
@@ -158,17 +158,17 @@ struct sHMC5883Status HMC5883_GetStatus(void)
 	return status;
 }
 
-uint8 HMC5883_GetIdRegA(void)
+uint8_t HMC5883_GetIdRegA(void)
 {
 	return HMC5883_ReadReg(HMC5883_ID_A_REG_ADDR);
 }
 
-uint8 HMC5883_GetIdRegB(void)
+uint8_t HMC5883_GetIdRegB(void)
 {
 	return HMC5883_ReadReg(HMC5883_ID_B_REG_ADDR);
 }
 
-uint8 HMC5883_GetIdRegC(void)
+uint8_t HMC5883_GetIdRegC(void)
 {
 	return HMC5883_ReadReg(HMC5883_ID_C_REG_ADDR);
 }
