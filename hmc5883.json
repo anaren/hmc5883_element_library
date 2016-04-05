@@ -14,7 +14,8 @@
 	"version": "1.0.0",
 
 	"links":{
-		"Datasheet":"http://www51.honeywell.com/aero/common/documents/myaerospacecatalog-documents/Defense_Brochures-documents/HMC5883L_3-Axis_Digital_Compass_IC.pdf"
+		"Datasheet":"http://www51.honeywell.com/aero/common/documents/myaerospacecatalog-documents/Defense_Brochures-documents/HMC5883L_3-Axis_Digital_Compass_IC.pdf",
+		"Wiki Page":"https://atmosphere.anaren.com/wiki/HMC5883_Driver"
 	},
 	
 	"code": {
