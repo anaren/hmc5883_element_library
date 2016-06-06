@@ -202,10 +202,6 @@ enum eHMC5883MeasurementMode HMC5883_GetMeasurementMode(void);
 void HMC5883_SetGain(enum eHMC5883Gain gain);
 enum eHMC5883Gain HMC5883_GetGain(void);
 
-
-float HMC5883_GetHeading(void);
-
-
 /**
 Select the device operating mode.	Refer to eHMC5883OperatingMode definition for
 details regarding the allowed states.
